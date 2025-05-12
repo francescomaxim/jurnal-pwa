@@ -1,0 +1,31 @@
+<div class="flex justify-between p-8 bg-gray-500 rounded-2xl">
+  <div class="w-2/3" (click)="goToPage()">
+    <h1 class="text-3xl mb-3">{{ journal().title }}</h1>
+    <h2>{{ getTime() }}</h2>
+  </div>
+  <div class="w-1/3 text-right relative">
+    <button
+      class="text-3xl text-gray-600 hover:text-gray-900"
+      (click)="toggleMenu()"
+    >
+      ...
+    </button>
+    <div
+      *ngIf="isMenuOpen"
+      class="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-md z-10"
+    >
+      <button
+        class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+        (click)="delete()"
+      >
+        Remove
+      </button>
+      <button
+        class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+        (click)="export()"
+      >
+        Export to PDF
+      </button>
+    </div>
+  </div>
+</div>

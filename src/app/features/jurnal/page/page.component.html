@@ -1,0 +1,29 @@
+<div class="h-screen">
+  <div class="flex justify-between p-5 mx-5">
+    <div (click)="goBack()" class="text-xl font-extrabold">&larr;</div>
+    <div class="text-xl">Create Journal</div>
+    <div></div>
+  </div>
+  <div class="flex justify-between p-5">
+    <div class="my-auto text-xl font-bold text-gray-500">DRAFTS</div>
+    <div>
+      <button
+        class="py-2 px-4 bg-pink-600 text-white rounded-full text-xl"
+        (click)="saveToJournal()"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+  <div class="p-5">
+    <h1 class="text-4xl">{{ journal?.title }}</h1>
+  </div>
+  <div class="p-5">
+    <textarea
+      name="textjurnal"
+      id="textjurnal"
+      class="h-screen w-full text-2xl"
+      [(ngModel)]="textjurnal"
+    ></textarea>
+  </div>
+</div>

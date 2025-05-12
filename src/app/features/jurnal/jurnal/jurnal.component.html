@@ -1,0 +1,65 @@
+<div class="h-screen bg-purple-900 text-white">
+  <div class="flex justify-between p-5 mx-5">
+    <div (click)="goBack()" class="text-xl font-extrabold">&larr;</div>
+    <div class="text-xl">Create Journal</div>
+    <div></div>
+  </div>
+  <div class="text-red-500 text-md font-bold text-center h-[10px]">
+    {{ notValidJurnal }}
+  </div>
+  <div class="flex flex-col">
+    <textarea
+      name="title"
+      id="title"
+      rows="3"
+      cols="10"
+      placeholder="Cycling and enjoy the city view"
+      class="text-5xl p-8 h-[250px] w-4/5"
+      [(ngModel)]="title"
+    ></textarea>
+    <div class="flex p-3 text-gray-400 text-lg">
+      <input
+        id="date"
+        name="date"
+        type="date"
+        [max]="getMaxDate()"
+        class="w-[30px] [&::-webkit-datetime-edit]:hidden [&::-webkit-inner-spin-button]:hidden [&::-webkit-calendar-picker-indicator]:m-0 [&::-webkit-calendar-picker-indicator]:block [&::-webkit-calendar-picker-indicator]:w-6 [&::-webkit-calendar-picker-indicator]:h-6 [&::-webkit-calendar-picker-indicator]:opacity-100 w-24"
+        [(ngModel)]="date"
+      />
+      <label for="">Add Date</label>
+    </div>
+  </div>
+
+  <div
+    class="flex flex-col justify-center mx-5 mt-7 space-y-5 bg-white text-black p-2 rounded-2xl"
+  >
+    <div class="p-5">
+      <div class="mb-5">
+        <h1 class="text-xl font-bold">Choose Category</h1>
+      </div>
+      <div class="flex space-x-5 overflow-x-scroll">
+        @for (category of categories(); track category.name) {
+        <div class="flex flex-col w-15">
+          <div
+            class="flex items-center justify-center w-15 h-15 rounded-full cursor-pointer transition-colors"
+            [class.bg-pink-500]="selectedCategory() !== category.name"
+            [class.bg-pink-700]="selectedCategory() === category.name"
+            [class.border-2]="selectedCategory() === category.name"
+            [class.border-pink-900]="selectedCategory() === category.name"
+            (click)="selectCategory(category.name)"
+          >
+            <div class="text-white text-2xl font-bold leading-none">+</div>
+          </div>
+          <div class="text-center">{{ category.name }}</div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <button class="rounded-full p-4 border text-white bg-black">
+      <div class="flex justify-center" (click)="createNewJurnal()">
+        <h1 class="my-auto">Create Journal</h1>
+      </div>
+    </button>
+  </div>
+</div>
